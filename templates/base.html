@@ -1,0 +1,210 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>FIRST-LTD</title>
+	<meta name="description"
+		content="First Education is qualified in Print books and e-learning technologies including but not limited to online educational content.">
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+	<!-- Bootstrap -->
+	<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+		integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+	<link rel="icon" href="{% static 'imgs/browserIcon.png' %}">
+	<link href="{% static 'css/owl.carousel.min.css' %}" rel="stylesheet">
+	<link href="{% static 'css/owl.theme.default.min.css' %}" rel="stylesheet">
+	<link href="{% static 'css/main.css' %}" rel="stylesheet">
+	<script src="{% static 'js/add-to-cart.js' %}"></script>
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+	{% block style %}
+
+	{% endblock style %}
+
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]-->
+	<script src="{% static 'js/html5shiv.min.js' %}"></script>
+	<script src="{% static 'js/respond.min.js' %}"></script>
+	<!--[endif]-->
+	<!--<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>-->
+	<script src="https://code.jquery.com/jquery-1.7.1.min.js"
+		integrity="sha256-iBcUE/x23aI6syuqF7EeT/+JFBxjPs5zeFJEXxumwb0=" crossorigin="anonymous"></script>
+	<script>
+		function getCookie(name) {
+			let cookieValue = null;
+			if (document.cookie && document.cookie !== '') {
+				const cookies = document.cookie.split(';');
+				for (let i = 0; i < cookies.length; i++) {
+					const cookie = cookies[i].trim();
+					// Does this cookie string begin with the name we want?
+					if (cookie.substring(0, name.length + 1) === (name + '=')) {
+						cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+						break;
+					}
+				}
+			}
+			return cookieValue;
+		}
+		const csrftoken = getCookie('csrftoken');
+	</script>
+</head>
+
+<body>
+
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+					data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="{% url 'Home:home' %}">
+					<img class="navbarLogo" alt="Brand" src="{% static 'imgs/alawalredlogo.webp' %}">
+				</a>
+			</div>
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="{% url 'Home:home' %}">HOME</a></li>
+					<li><a href="{% url 'Home:aboutus' %}">ABOUT US</a></li>
+					<li><a href="{% url 'Home:publishers' %}">PARTNERS</a></li>
+					<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#">OUR PRODUCTS
+							<span class="caret"></span></a>
+						<ul class="dropdown-menu  scrollable-menu">
+							<li><a href="{% url 'Home_stores:booksforsale' %}">All CATEGORIES</a></li>
+
+							{% for c in category %}
+
+							<li><a href="{% url 'Home_stores:booksforsale_subcategory' c.slug %}">{{c.name}}</a></li>
+
+							{% endfor %}
+
+						</ul>
+					</li>
+
+					<li><a href="{% url 'Home:specialeducation' %}">SPECIAL EDUCATION</a></li>
+
+					<li><a href="{% url 'Home:contact-us' %}">CONTACT US</a></li>
+					{% if user.is_authenticated %}
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+							{{ user.get_username }} <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="{% url 'Home:logout' %}?next={{request.path}}"><i class="fa fa-sign-out"></i>
+									Sign-out</a></li>
+						</ul>
+					</li>
+					{% else %}
+					<li><a href="{% url 'Home:sign-up-and-log-in' %}"><i class="fa fa-user" aria-hidden="true"></i> Sign up
+							or login</a>
+					</li>
+					{% endif %}
+					<li><a href="{% url 'Home_book:checkout' %}"><span class="cartWord">CART </span><i class="fa fa-shopping-cart"
+								aria-hidden="true"></i><span class="badge"></span></a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	{% block body %}
+
+	{% endblock body %}
+	<section class="contactsFotter">
+		<div class="container">
+			<div class="col-sm-4">
+				<p class="contactsTitle">CONTACTS</p>
+				<p class="contactsDetails">
+					<i class="fa fa-map-marker" aria-hidden="true"></i>
+					{{footer.address}}
+				</p>
+				<p class="contactsDetails">
+					<i class="fa fa-phone" aria-hidden="true"></i>
+					{{footer.phone}}
+				</p>
+				<p class="contactsDetails">
+					<i class="fa fa-envelope" aria-hidden="true"></i>
+					{{footer.email}}
+				</p>
+				<p class="contactsDetails">
+					<i class="fa fa-mobile" aria-hidden="true"></i>
+					{{footer.mobile}}
+				</p>
+			</div>
+			<div class="col-sm-4 text-center followUs">
+				<img class="img-responsive" src="{% static 'imgs/alawalwhitelogo.webp' %}" alt="Logo">
+				<p>FOLLOW US</p>
+				<a href="{{ footer.facebook_link }}"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
+				<a href="{{ footer.instgram_link }}"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
+				<a href="{{ footer.website_link }}"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
+			</div>
+			<div class="col-sm-4">
+				<p class="contactsTitle">SITE MAP</p>
+				<a class="contactsDetails" href="{% url 'Home:home' %}">HOME</a>
+				<a class="contactsDetails" href="{% url 'Home:aboutus' %}">ABOUT</a>
+				<a class="contactsDetails" href="{% url 'Home:publishers' %}">PARTNERS</a>
+				<a class="contactsDetails" href="{% url 'Home_stores:booksforsale' %}">OUR PRODUCTS
+				</a>
+
+				<a class="contactsDetails" href="{% url 'Home:contact-us' %}">CONTACT US</a>
+			</div>
+		</div>
+	</section>
+	<a href="#" class="scrollToTop"><img class="img-responsive " src="{% static 'imgs/scrolltotop.webp' %}"
+			alt="scroll to top"></a>
+	<div class="loadingPage">
+		<div class="book">
+			<div class="book__page"></div>
+			<div class="book__page"></div>
+			<div class="book__page"></div>
+		</div>
+	</div>
+	<!-- loading Page-->
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="{% static 'js/jquery.js' %}"></script>
+	<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="{% static 'js/bootstrap.min.js' %}"></script>
+	<script src="{% static 'js/niceCountryInput.js' %}"></script>
+	<script src="{% static 'js/main.js' %}"></script>
+	{% block Script %}
+
+	{% endblock Script %}
+	<script>
+		$(".owl-carousel").owlCarousel({
+			loop: true,
+			margin: 50,
+			autoplay: true,
+			autoplayTimeout: 2500,
+			dots: true,
+			smartSpeed: 1500,
+			responsive: {
+				0: {
+					items: 2
+				},
+				480: {
+					items: 2
+				},
+				768: {
+					items: 3
+				},
+				1200: {
+					items: 4
+				},
+				1500: {
+					items: 5
+				},
+			}
+		});
+
+	</script>
+</body>
+
+</html>

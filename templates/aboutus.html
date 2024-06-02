@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+
+
+
+
+<section class="text-center homeAbout ">
+
+	<div class="container">
+		<h1 class="aboutTitle">ABOUT FIRST</h1>
+		<p class="aboutData">
+			2020 Our story began from a good understanding for the customer needs. We were gathering the experince of many experties in the E-commerce, hoping to give our customers the best of what they are looking for, all in one platform.
+		</p>
+		<div class="row clientsRow text-center">
+			<div class="col-xs-6 col-md-3 educationSections american">
+				<p >CUSTOMER OBSESSED</p>
+				<p class="text">Exceeding our customers'
+expectations always is at the
+core of everything we do by a superior customer
+experience</p>
+			</div>
+			<div class="col-xs-6 col-md-3 educationSections britsh">
+				<p>CONTINUOUS IMPROVEMENT</p>
+				<p class="text">We surprise and delight
+by never being satisfied
+with the status quo
+we want to be better
+tomorrow than we are today</p>
+			</div>
+			<div class="col-xs-6 col-md-3 educationSections languageschools">
+				<p>TO BE THE BEST</p>
+				<p class="text">We strive to be the best
+at what we do through
+accountability, focus,
+initiative and a
+winning attitudey</p>
+			</div>
+			<div class="col-xs-6 col-md-3 educationSections ibschools">
+				<p>THE GOLDEN RULE</p>
+				<p class="text">We treat people the way
+we want to be treated
+with honesty and
+fairness when in doubt the
+golden rule trumps all</p>
+			</div>
+		</div>
+
+	</div>
+
+	<div class="container">
+	    <div class="row clientsRow text-center">
+
+
+	        <div class="col-md-8">
+	             <img class="img-responsive" src="{% static 'imgs/aboutPagePhoto.png' %}">
+
+	        </div>
+
+	        <div class="col-md-4">
+	            <div class="  educationSections firstAbout">
+				<p class="productTypeName">PEOPLE: Our dedicated team creates products that help enable the consumer to TRUST the brands they are buying through quality, consistency, innovation and efficacy.</p>
+			</div>
+			<div class="  educationSections secondAbout">
+				<p class="productTypeName">PLANET: Cosmetic Solutions uses a low carbon emission model to conduct business allowing for a lessened environmental footprint.</p>
+			</div>
+			<div class="  educationSections thirdAbout">
+				<p class="productTypeName">PLANTS: Cosmetic Solutions formulates, whenever possible, with natural and naturally derived ingredients. We create pure formulas with minimal ingredients.</p>
+			</div>
+			<div class="  educationSections forthAbout">
+				<p class="productTypeName">PACKAGING: Cosmetic Solutions makes certain to work with vendors and suppliers who follow global fair trade practices as well as sustainability, ethical sourcing and transparency. Our dedicated team creates products that help enable the consumer to TRUST the brands they are buying through quality, consistency, innovation and efficacy.</p>
+			</div>
+
+
+				<div class="  educationSections thirdAbout">
+				<p class="productTypeName">PARTNERS: Cosmetic Solutions is proud to partner with like- minded organizations who support our business objectives and corporate morals. These valued partnerships allow us to better fulfill our goal of being the leader in the skincare industry through our technological knowledge and sustainable product innovation.	</div>
+
+	        </div>
+
+
+
+
+		</div>
+
+	</div>
+
+</section>
+
+
+
+
+ <section class="text-center homeAbout">
+	<div class="container">
+		<h1 class="aboutTitle">OUR PRODUCTS</h1>
+		<p class="aboutData">
+			We were gathering the experince of many experties in the E-commerce, hoping to give our customers the best of what they are looking for,
+			all in one platform
+		</p>
+		<div class="row clientsRow text-center">
+			<div class="col-xs-6 col-md-3 educationSections english">
+				<p class="productTypeName">Food and Beverage</p>
+			</div>
+			<div class="col-xs-6 col-md-3 educationSections science">
+				<p class="productTypeName">Beauty</p>
+			</div>
+			<div class="col-xs-6 col-md-3 educationSections math">
+				<p class="productTypeName">Decor and Gifts</p>
+			</div>
+			<div class="col-xs-6 col-md-3 educationSections">
+				<p class="productTypeName">Others</p>
+			</div>
+		</div>
+		<a href="{% url 'Home_stores:booksforsale' %}"><button class="readmoreButton">EXPLORE OUR PRODUCTS</button></a>
+	</div>
+
+
+</section>
+
+{% endblock body %}

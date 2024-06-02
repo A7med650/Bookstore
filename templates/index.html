@@ -1,0 +1,162 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+<div id="carousel-example-generic" class="carousel-fade carousel slide" data-ride="carousel">
+	<!-- Indicators -->
+	<ol class="carousel-indicators">
+		<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+		<li data-target="#carousel-example-generic" data-slide-to="1"></li>
+		<li data-target="#carousel-example-generic" data-slide-to="2"></li>
+	</ol>
+	<!-- Wrapper for slides -->
+	<div class="carousel-inner" role="listbox">
+		<div class="item  slide1 active">
+			<div class="carousel-caption-alawal">
+
+				<p class="animated fadeIn delay-2s">2020 Our story began from a good understanding for the customer needs</p>
+			</div>
+		</div>
+		<div class="item  slide2 ">
+			<div class="carousel-caption-alawal">
+
+				<p class="animated fadeIn delay-2s">We were gathering the experince of many experties in the E-commerce
+				</p>
+			</div>
+		</div>
+		<div class="item  slidethree ">
+			<div class="carousel-caption-alawal">
+
+				<p class="animated fadeIn delay-2s">hoping to give our customers the best of what they are looking for</p>
+			</div>
+		</div>
+	</div>
+	<!-- Controls -->
+	<a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+		<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+		<span class="sr-only">Previous</span>
+	</a>
+	<a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+		<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+		<span class="sr-only">Next</span>
+	</a>
+</div>
+
+
+
+
+<section class="text-center homeAbout">
+	<div class="container">
+		<h1 class="aboutTitle">OUR PRODUCTS</h1>
+		<p class="aboutData">
+			We were gathering the experince of many experties in the E-commerce, hoping to give our customers the best of what they are looking for,
+			all in one platform
+		</p>
+		<div class="row clientsRow text-center">
+			<div class="col-xs-6 col-md-3 educationSections english">
+				<p class="productTypeName">Food and Beverage</p>
+			</div>
+			<div class="col-xs-6 col-md-3 educationSections science">
+				<p class="productTypeName">Beauty</p>
+			</div>
+			<div class="col-xs-6 col-md-3 educationSections math">
+				<p class="productTypeName">Decor and Gifts</p>
+			</div>
+			<div class="col-xs-6 col-md-3 educationSections">
+				<p class="productTypeName">Others</p>
+			</div>
+		</div>
+		<a href="{% url 'Home_stores:booksforsale' %}"><button class="readmoreButton">EXPLORE OUR PRODUCTS</button></a>
+	</div>
+</section>
+
+
+
+<section class="publishersHome text-center ">
+	<div class="container text-center">
+		<h1 class="publisheraTitle">OUR PARTNERS</h1>
+		<p class="publishersData">
+			We work with worldwide suppliers, to purchase and ship your products all in one place.
+		</p>
+		<div class="owl-carousel owl-theme ">
+
+			{% for p in publisher %}
+
+			<div> <img class="img-responsive" src="{{ p.image_url }}" alt="{{ p.nameofsupplier }}"> </div>
+
+			{% endfor %}
+
+		</div>
+		<a href="{% url 'Home:publishers' %}"><button class="readmoreButton">EXPLORE OUR PARTNERS</button></a>
+	</div>
+</section>
+
+
+<section class="text-center homeAbout ">
+	<div class="container">
+		<h1 class="aboutTitle">ABOUT FIRST</h1>
+		<p class="aboutData">
+			2020 Our story began from a good understanding for the customer needs. We were gathering the experince of many experties in the E-commerce, hoping to give our customers the best of what they are looking for, all in one platform.
+		</p>
+		<div class="row clientsRow text-center">
+			<div class="col-xs-6 col-md-3 educationSections american">
+				<p >CUSTOMER OBSESSED</p>
+				<p class="text">Exceeding our customers'
+expectations always is at the
+core of everything we do by a superior customer
+experience</p>
+			</div>
+			<div class="col-xs-6 col-md-3 educationSections britsh">
+				<p>CONTINUOUS IMPROVEMENT</p>
+				<p class="text">We surprise and delight
+by never being satisfied
+with the status quo
+we want to be better
+tomorrow than we are today</p>
+			</div>
+			<div class="col-xs-6 col-md-3 educationSections languageschools">
+				<p>TO BE THE BEST</p>
+				<p class="text">We strive to be the best
+at what we do through
+accountability, focus,
+initiative and a
+winning attitudey</p>
+			</div>
+			<div class="col-xs-6 col-md-3 educationSections ibschools">
+				<p>THE GOLDEN RULE</p>
+				<p class="text">We treat people the way
+we want to be treated
+with honesty and
+fairness when in doubt the
+golden rule trumps all</p>
+			</div>
+		</div>
+		<a href="{% url 'Home:aboutus' %}"><button class="readmoreButton">READ MORE</button></a>
+	</div>
+</section>
+
+
+
+
+<!--<section class="text-center homeAbout specialNeedsBooksHome">-->
+<!--	<div class="container">-->
+<!--		<h1 class="aboutTitle">SPECIAL NEEDS EDUCATION </h1>-->
+<!--		<p class="aboutData">-->
+<!--			Special Education services are not only for students that have specific disabilities, but the also for-->
+<!--			students with significantly high abilities, usually referred to as "gifted".-->
+<!--		</p>-->
+<!--		<div class="row clientsRow specialNeedsrow text-center">-->
+<!--			<div class="col-xs-4 col-sm-4 col-md-3 educationSections autism">-->
+<!--				<p>AUTISM</p>-->
+<!--			</div>-->
+<!--			<div class="col-xs-4 col-sm-4 col-md-3 educationSections anxiety">-->
+<!--				<p>ANXIETY</p>-->
+<!--			</div>-->
+<!--			<div class="col-xs-4 col-sm-4 col-md-3 educationSections">-->
+<!--				<p>AND MORE...</p>-->
+<!--			</div>-->
+<!--		</div>-->
+<!--		<a href="{% url 'Home:specialeducation' %}"><button class="readmoreButton">READ MORE</button></a>-->
+<!--	</div>-->
+<!--</section>-->
+{% endblock body %}
